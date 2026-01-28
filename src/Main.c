@@ -14,7 +14,7 @@ void Setup(AlxWindow* w){
 	//sp = ASCII_Sprite_Load("./assets/Physik." ASCII_SPRITE_TYPE);
     
     rlc = RLCamera_New(RLCAMERA_DEVICE,RLCAMERA_WIDTH * 2,RLCAMERA_HEIGHT * 2);
-    orlc = ORLCamera_New("/dev/video10",GetWidth(),GetHeight());
+    orlc = ORLCamera_New(10,"VirtualCamera",GetWidth(),GetHeight());
 }
 void Update(AlxWindow* w){
 
@@ -38,7 +38,9 @@ void Update(AlxWindow* w){
 void Delete(AlxWindow* w){
     ASCII_Sprite_Free(&asp);
     RLCamera_Free(&rlc);
+    
     ORLCamera_Free(&orlc);
+    ORLCamera_Close(&orlc);
 }
 
 int main(){
